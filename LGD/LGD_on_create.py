@@ -33,7 +33,7 @@ def mat_judge(i):
         return datetime.datetime.strptime(res,'%M/%d/%Y')
     else:
         try:
-            return datetime.datetime.strptime(i,'%M/%d/%Y')
+            return datetime.datetime.strptime(str(i),'%M/%d/%Y')
         except:
             return
 
@@ -43,6 +43,8 @@ def time_in_default(x):
     '''The input should be Timestamp data.'''
     '''Ideally, we will use dateOfArrears to calculate the
        time in default.'''
+    '''the result is in years'''
+    
     d1 = datetime.date.today()
     d2 = x
     time_in_default = (d1-d2).days/365
@@ -141,7 +143,7 @@ from bson.objectid import ObjectId
 
 # asset_id = sys.argv[1]
 
-# asset_id = "5bb7eb2ae815641f34164152"
+asset_id = "5bb7eb2ae815641f34164152"
 
 client = pymongo.MongoClient('localhost', 27017)
 mydb = client["bam"]
